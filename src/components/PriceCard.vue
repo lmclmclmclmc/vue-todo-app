@@ -1,6 +1,22 @@
+
 <script setup lang="ts">
-import { usePriceStore } from '@/stores/price'
+import { watch } from 'vue'
+interface Props {
+  initial?: number
+}
+const props = withDefaults(defineProps<Props>(), {
+  initial: 10
+})
+
+interface Emits {
+  change: [val: number]
+}
+const emit = defineEmits<Emits>()
+import { usePriceStore } from '../stores/price'
+
 const store = usePriceStore()
+store.price = props.initial
+watch(() => store.price, (newVal) => emit('change', newVal))
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from 'vue'
 import PriceCard from '../components/PriceCard.vue'
-import { useTodoStore }from '../stores/todo.ts'
+import { useTodoStore }from '../stores/todo'
 
 const num = ref(0)
 const user = reactive({ name: '小明', age: 18 })
