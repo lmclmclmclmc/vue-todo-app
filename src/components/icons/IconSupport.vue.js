@@ -12,9 +12,5 @@ __VLS_asFunctionalElement(__VLS_elements.svg, __VLS_elements.svg)({
 __VLS_asFunctionalElement(__VLS_elements.path)({
     d: "M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.666.105 5.5 5.5 0 0 0-.114 7.665L10 18.78l8.39-8.4a5.5 5.5 0 0 0-.114-7.665 5.5 5.5 0 0 0-7.666-.105l-.61.61z",
 });
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({}),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};

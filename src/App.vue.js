@@ -1,14 +1,15 @@
 import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
-const __VLS_ctx = {};
+const __VLS_ctx = {
+    ...{},
+    ...{},
+};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
 /** @type {__VLS_StyleScopedClasses['router-link-exact-active']} */ ;
 /** @type {__VLS_StyleScopedClasses['logo']} */ ;
-// CSS variable injection 
-// CSS variable injection end 
 __VLS_asFunctionalElement(__VLS_elements.header, __VLS_elements.header)({});
 __VLS_asFunctionalElement(__VLS_elements.nav, __VLS_elements.nav)({
     ...{ style: {} },
@@ -93,13 +94,5 @@ const __VLS_25 = __VLS_asFunctionalComponent(__VLS_24, new __VLS_24({}));
 const __VLS_26 = __VLS_25({}, ...__VLS_functionalComponentArgsRest(__VLS_25));
 /** @type {__VLS_StyleScopedClasses['logo']} */ ;
 /** @type {__VLS_StyleScopedClasses['wrapper']} */ ;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({
-        RouterLink: RouterLink,
-        RouterView: RouterView,
-        HelloWorld: HelloWorld,
-    }),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};

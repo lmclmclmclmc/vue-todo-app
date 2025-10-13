@@ -1,19 +1,40 @@
 import { ref, reactive, computed, watch } from 'vue';
-import PriceCard from '../components/PriceCard.vue';
 import { useTodoStore } from '../stores/todo';
+import { onMounted } from 'vue';
+import { defineAsyncComponent } from 'vue';
+const PriceCard = defineAsyncComponent(() => import('@/components/PriceCard.vue'));
 const num = ref(0);
 const user = reactive({ name: '小明', age: 18 });
 const nextAge = computed(() => user.age + num.value);
 const store = useTodoStore();
+onMounted(async () => {
+    await store.loadTodos();
+});
+onMounted(async () => {
+    console.log('store keys:', Object.keys(useTodoStore()));
+    await useTodoStore().loadTodos();
+});
+console.log('>>> todo.ts 被加载', new Date().toLocaleTimeString());
 watch(num, n => console.log(`num → ${n}`));
 //watch(price, p => p > 20 && console.warn('[价格警告] 超过 20 元'))
+onMounted(() => {
+    console.log('store', store); // 看有没有 isLoading/errorMsg
+    console.log('isLoading', store.isLoading);
+    console.log('errorMsg', store.errorMsg);
+});
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
-const __VLS_ctx = {};
+const __VLS_ctx = {
+    ...{},
+    ...{},
+};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
-// CSS variable injection 
-// CSS variable injection end 
+if (__VLS_ctx.store.isLoading) {
+    // @ts-ignore
+    [store,];
+    __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({});
+}
 __VLS_asFunctionalElement(__VLS_elements.h2, __VLS_elements.h2)({});
 __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({});
 (__VLS_ctx.num);
@@ -26,10 +47,13 @@ __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             [num,];
         } },
 });
-/** @type {[typeof PriceCard, ]} */ ;
+const __VLS_0 = {}.PriceCard;
+/** @type {[typeof __VLS_components.PriceCard, ]} */ ;
 // @ts-ignore
-const __VLS_0 = __VLS_asFunctionalComponent(PriceCard, new PriceCard({}));
-const __VLS_1 = __VLS_0({}, ...__VLS_functionalComponentArgsRest(__VLS_0));
+PriceCard;
+// @ts-ignore
+const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({}));
+const __VLS_2 = __VLS_1({}, ...__VLS_functionalComponentArgsRest(__VLS_1));
 __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({});
 __VLS_asFunctionalElement(__VLS_elements.input)({});
 (__VLS_ctx.user.name);
@@ -47,6 +71,25 @@ __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({});
 // @ts-ignore
 [user, nextAge,];
 __VLS_asFunctionalElement(__VLS_elements.hr)({});
+if (__VLS_ctx.store.errorMsg) {
+    // @ts-ignore
+    [store,];
+    __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
+        ...{ style: {} },
+    });
+    (__VLS_ctx.store.errorMsg);
+    // @ts-ignore
+    [store,];
+}
+if (__VLS_ctx.store.errorMsg) {
+    // @ts-ignore
+    [store,];
+    __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
+        ...{ onClick: (__VLS_ctx.store.loadTodos) },
+    });
+    // @ts-ignore
+    [store,];
+}
 __VLS_asFunctionalElement(__VLS_elements.h3, __VLS_elements.h3)({});
 __VLS_asFunctionalElement(__VLS_elements.input)({
     ...{ onKeyup: (...[$event]) => {
@@ -75,15 +118,5 @@ for (const [item, idx] of __VLS_getVForSourceType((__VLS_ctx.store.todos))) {
     (item.text);
 }
 /** @type {__VLS_StyleScopedClasses['done']} */ ;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({
-        PriceCard: PriceCard,
-        num: num,
-        user: user,
-        nextAge: nextAge,
-        store: store,
-    }),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};

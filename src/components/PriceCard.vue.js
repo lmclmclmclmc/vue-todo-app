@@ -1,3 +1,4 @@
+import { watch } from 'vue';
 const props = withDefaults(defineProps(), {
     initial: 10
 });
@@ -5,16 +6,21 @@ const emit = defineEmits();
 import { usePriceStore } from '../stores/price';
 const store = usePriceStore();
 store.price = props.initial;
+watch(() => store.price, (newVal) => emit('change', newVal));
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
-const __VLS_withDefaultsArg = (function (t) { return t; })({
+const __VLS_defaults = {
     initial: 10
-});
-const __VLS_ctx = {};
+};
+const __VLS_ctx = {
+    ...{},
+    ...{},
+    ...{},
+    ...{},
+    ...{},
+};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
-// CSS variable injection 
-// CSS variable injection end 
 __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
     ...{ class: "price-card" },
 });
@@ -40,18 +46,9 @@ __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
 // @ts-ignore
 [store,];
 /** @type {__VLS_StyleScopedClasses['price-card']} */ ;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({
-        store: store,
-    }),
+const __VLS_export = (await import('vue')).defineComponent({
     __typeEmits: {},
     __typeProps: {},
     props: {},
 });
-export default (await import('vue')).defineComponent({
-    __typeEmits: {},
-    __typeProps: {},
-    props: {},
-});
-; /* PartiallyEnd: #4569/main.vue */
+export default {};

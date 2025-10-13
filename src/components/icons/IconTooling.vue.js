@@ -20,9 +20,5 @@ __VLS_asFunctionalElement(__VLS_elements.path, __VLS_elements.path)({
 });
 /** @type {__VLS_StyleScopedClasses['iconify']} */ ;
 /** @type {__VLS_StyleScopedClasses['iconify--mdi']} */ ;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({}),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};

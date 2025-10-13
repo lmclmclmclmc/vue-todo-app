@@ -1,28 +1,47 @@
-// stores/todo.ts
 import { defineStore } from 'pinia'
-import axios from 'axios'
+import { ref } from 'vue'
+import { http } from '@/utils/http'
 
-import {ref} from 'vue'
-const api = 'https://mock.mengxuegu.com/todos'
 export interface TodoItem {
-  id?: string | number
+  id: string        // ✅ 只保留 string，与后端一致
   text: string
   done: boolean
 }
 
 export const useTodoStore = defineStore('todo', () => {
   const todos = ref<TodoItem[]>([])
+  const isLoading = ref(false)
+  const errorMsg = ref('')
 
   async function loadTodos() {
-    const { data } = await axios.get<TodoItem[]>(api)
-    todos.value = data
+    isLoading.value = true
+    errorMsg.value = ''
+    try {
+      const { data } = await http.get<TodoItem[]>('/todos')
+      todos.value = data
+    } catch (e: unknown) {
+  errorMsg.value = (e as Error).message || '加载失败'
+    } finally {
+      isLoading.value = false
+    }
   }
 
   async function addTodo(text: string) {
     if (!text.trim()) return
-    const { data } = await axios.post<TodoItem>(api, { text, done: false })
+    const { data } = await http.post<TodoItem>('/todos', { text, done: false })
     todos.value.push(data)
   }
 
-  return { todos, loadTodos, addTodo }
+  async function toggleTodo(id: string) {
+    const t = todos.value.find(t => t.id === id)!
+    const { data } = await http.patch<TodoItem>(`/todos/${id}`, { done: !t.done })
+    t.done = data.done
+  }
+
+  async function removeTodo(id: string) {
+    await http.delete(`/todos/${id}`)
+    todos.value = todos.value.filter(t => t.id !== id)
+  }
+
+  return { todos, isLoading, errorMsg, loadTodos, addTodo, toggleTodo, removeTodo }
 })

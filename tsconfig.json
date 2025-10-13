@@ -1,6 +1,8 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
      "baseUrl": ".",
+      "types": ["vite/client", "node"], // 👈 强制引入
     "paths": {
       "@/*": ["src/*"]
     },

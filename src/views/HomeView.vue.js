@@ -10,12 +10,13 @@ function addTodo() {
     }
 }
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
-const __VLS_ctx = {};
+const __VLS_ctx = {
+    ...{},
+    ...{},
+};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
-// CSS variable injection 
-// CSS variable injection end 
 __VLS_asFunctionalElement(__VLS_elements.main, __VLS_elements.main)({});
 __VLS_asFunctionalElement(__VLS_elements.h1, __VLS_elements.h1)({});
 __VLS_asFunctionalElement(__VLS_elements.input)({
@@ -48,13 +49,5 @@ for (const [todo, index] of __VLS_getVForSourceType((__VLS_ctx.todos))) {
     (todo.text);
 }
 /** @type {__VLS_StyleScopedClasses['done']} */ ;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({
-        newTodo: newTodo,
-        todos: todos,
-        addTodo: addTodo,
-    }),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};

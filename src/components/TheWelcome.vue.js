@@ -6,7 +6,10 @@ import CommunityIcon from './icons/IconCommunity.vue';
 import SupportIcon from './icons/IconSupport.vue';
 const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
-const __VLS_ctx = {};
+const __VLS_ctx = {
+    ...{},
+    ...{},
+};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
@@ -183,17 +186,5 @@ __VLS_asFunctionalElement(__VLS_elements.a, __VLS_elements.a)({
     rel: "noopener",
 });
 var __VLS_42;
-var __VLS_dollars;
-const __VLS_self = (await import('vue')).defineComponent({
-    setup: () => ({
-        WelcomeItem: WelcomeItem,
-        DocumentationIcon: DocumentationIcon,
-        ToolingIcon: ToolingIcon,
-        EcosystemIcon: EcosystemIcon,
-        CommunityIcon: CommunityIcon,
-        SupportIcon: SupportIcon,
-        openReadmeInEditor: openReadmeInEditor,
-    }),
-});
-export default (await import('vue')).defineComponent({});
-; /* PartiallyEnd: #4569/main.vue */
+const __VLS_export = (await import('vue')).defineComponent({});
+export default {};
