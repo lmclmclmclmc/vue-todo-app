@@ -1,22 +1,28 @@
+// stores/todo.ts
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import axios from 'axios'
 
+import {ref} from 'vue'
+const api = 'https://mock.mengxuegu.com/todos'
 export interface TodoItem {
+  id?: string | number
   text: string
   done: boolean
 }
 
 export const useTodoStore = defineStore('todo', () => {
-  const todos = ref<TodoItem[]>([{ text: '学习 Pinia 持久化', done: false }])
+  const todos = ref<TodoItem[]>([])
 
-  function addTodo(text: string) {
-    if (text.trim()) todos.value.push({ text, done: false })
-  }
-  function toggleTodo(todo: TodoItem) {
-    todo.done = !todo.done
+  async function loadTodos() {
+    const { data } = await axios.get<TodoItem[]>(api)
+    todos.value = data
   }
 
-  return { todos, addTodo, toggleTodo }
-}, {
-  persist: true
+  async function addTodo(text: string) {
+    if (!text.trim()) return
+    const { data } = await axios.post<TodoItem>(api, { text, done: false })
+    todos.value.push(data)
+  }
+
+  return { todos, loadTodos, addTodo }
 })

@@ -2,12 +2,14 @@
 import { ref, reactive, computed, watch } from 'vue'
 import PriceCard from '../components/PriceCard.vue'
 import { useTodoStore }from '../stores/todo'
-
+import { onMounted } from 'vue'
 const num = ref(0)
 const user = reactive({ name: '小明', age: 18 })
 const nextAge = computed(() => user.age + num.value)
 const store = useTodoStore()
-
+onMounted(async () => {
+  await store.loadTodos()
+})
 
 watch(num, n => console.log(`num → ${n}`))
 //watch(price, p => p > 20 && console.warn('[价格警告] 超过 20 元'))
