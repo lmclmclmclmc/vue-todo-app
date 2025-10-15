@@ -14,6 +14,4 @@ services:
           name: todo-db
           property: connectionString
       - key: CORS_ORIGIN
-        value: https://your-frontend.vercel.app
-
-        
+        value: https://vue-todo-app-ten-omega.vercel.app  # ← 更新这里！
