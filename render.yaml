@@ -2,18 +2,18 @@ services:
   - type: web
     name: todo-api
     env: node
-    region: singapore          # 离你近
-    buildCommand: cd apps/api && npm install && npm run build
+    plan: free
+    region: singapore
+    buildCommand: cd apps/api && npm install
     startCommand: cd apps/api && npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        sync: false
+        fromDatabase:
+          name: todo-db
+          property: connectionString
       - key: CORS_ORIGIN
-        sync: false
-
-
-
+        value: https://your-frontend.vercel.app
 
         
