@@ -16,10 +16,10 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "dev": "vite",
-    "build": "run-p type \"build-only {@}\" --",
+    "build": "vite build",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build",
+     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --fix",
     "api": "npm run dev -w apps/api",
     "api:build": "npm run build -w apps/api"
