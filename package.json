@@ -1,8 +1,6 @@
 {
   "name": "vue-todo-app",
-  "workspaces": [
-    "apps/*"
-  ],
+  
   "version": "0.0.0",
   "private": true,
   "type": "module",
